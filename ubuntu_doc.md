@@ -74,7 +74,7 @@ sudo apt install gnome-software
 sudo apt update
 ```
 
-## node
+## node 环境
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 当前是 16.x 的版本。 这里我使用了 LTS 版本。
 
@@ -83,19 +83,18 @@ curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 
 可以默认同意安装加上 -y:
 sudo apt install -y nodejs
-## node 卸载
+### node 卸载
 sudo apt remove --purge npm
 sudo apt remove --purge nodejs
 sudo apt remove --purge nodejs-legacy
 sudo apt autoremove
 
-## yarn
+### yarn
 npm install -g yarn
 sudo npm install -g umi
 查看：umi -v
 
 ## ubuntu安装中州韵rime输入法
-## 输入法
 https://www.freesion.com/article/4710839210/
 https://blog.csdn.net/qq_44700366/article/details/121446162
 ```
