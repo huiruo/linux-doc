@@ -283,10 +283,25 @@ sudo ufw reload
 sudo ufw enable
 ```
 
+### 解决 show databases; 出错
+```
+在安装完 MySQL 后，使用 SHOW TABLES 时，发现一直出现 ERROR 1449 (HY000):The user specified as a definer (‘mysql.infoschema‘@’localhost’) does not exist 。具体去网上搜索，给的答案都是用 mysql_upgrade ，事实上 mysql_upgrade 功能在 mysql8.0 之后版本已经停用了。在经过多方查找后，找到如下解决方案。
+
+总体办法就是给 mysql.infoschema 用户添加权限。
+MySQL8.0 之后，不支持使用 grant 时隐式地创建用户，必须先创建用户，再授权。代码如下：
+
+create user 'mysql.infoschema'@'%' identified by 'Abchen_123';
+grant all privileges on *.* to 'mysql.infoschema'@'%';
+flush privileges;
+```
+
 ```text
 service mysql status
 # 启动mysql service
 sudo service mysql start 
 mysql -u root -p;
 show databases;
+
+create database trader charset=utf8;
+
 ```
